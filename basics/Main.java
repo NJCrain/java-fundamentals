@@ -44,18 +44,21 @@ public class Main {
         System.out.println("It took " + flips + " " + pluralize("flip", flips) + " to flip " + streak + " " + pluralize("head", streak) + " in a row.");
     }
 
+
     public static void clock() {
         LocalDateTime now = LocalDateTime.now();
         String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         while (true) {
             int second = now.getSecond();
+            float cycles = 0f;
             do {
-                // System.out.println(second == now.getSecond());
+                cycles++;
                 now = LocalDateTime.now();
                 time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             } while (second == now.getSecond());
 
-            System.out.println(time);
+            float hertz = (Float) (cycles/1000000);
+            System.out.println(time + " " + hertz + " MHz");
         }
     }
 }
