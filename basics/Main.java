@@ -44,7 +44,6 @@ public class Main {
         System.out.println("It took " + flips + " " + pluralize("flip", flips) + " to flip " + streak + " " + pluralize("head", streak) + " in a row.");
     }
 
-    //TODO: Write a method clock that uses Java’s built-in LocalDateTime object to constantly print out the current time to the console, second by second. The program should run until someone manually kills it with CTRL-C or presses the “stop” button in their IDE. Each time should only be printed once. Your program should detect when the seconds increase and only print something out when the timestamp changes. Zero-pad single digit numbers as strings so the timestamp is always the same number of characters.
     public static void clock() {
         LocalDateTime now = LocalDateTime.now();
         String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
