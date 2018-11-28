@@ -26,4 +26,11 @@ public class Library {
         }
         return hasDupe;
     }
+
+    public static double average(int[] arr) {
+        double average = 0;
+        for (int value : arr)
+            average += value;
+        return average/ (double)arr.length;
+    }
 }

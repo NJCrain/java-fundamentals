@@ -25,4 +25,12 @@ public class LibraryTest {
         int[] dupes = {1, 2, 3, 2};
         assertTrue(Library.containsDuplicates(dupes));
     }
+
+    @Test public void testAverage() {
+        int[] numbers = {1, 2, 3, 4};
+        assertEquals("Should return the average of all values in the array", 2.5, Library.average(numbers), 0.001);
+
+        int[] moreNumbers = {4, 4, 4, 4};
+        assertEquals("Should return the average of all values in the array", 4, Library.average(moreNumbers), 0.001);
+    }
 }
