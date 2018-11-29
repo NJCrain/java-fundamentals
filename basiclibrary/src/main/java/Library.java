@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 /*
@@ -46,5 +49,73 @@ public class Library {
             }
         }
         return arraySet[lowestIndex];
+    }
+
+    /*This function takes a pre-determined set of daily temperatures each week for a whole month and finds the highest and lowest temperatures along with tracking all unique temperatures.
+    * It will then print out the high and low and any temperature between those two values that were not seen
+    */
+    public static void analyzeData() {
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        HashSet<Integer> temps = new HashSet<>();
+        int high = weeklyMonthTemperatures[0][0];
+        int low = weeklyMonthTemperatures[0][0];
+
+        for (int[] arr : weeklyMonthTemperatures) {
+            for (int temp : arr) {
+
+                if (temp > high){
+                    high = temp;
+                }
+                else if (temp < low) {
+                    low = temp;
+                }
+
+                temps.add(temp);
+            }
+        }
+
+        System.out.println("High: " + high);
+        System.out.println("Low: " + low);
+        for (int i = low; i < high; i++) {
+            if (!temps.contains(i)) {
+                System.out.println("Never saw temperature: " + i);
+            }
+
+        }
+    }
+
+    /*This function takes in a list of strings, each string being a "vote".
+    * The votes are tallied in a hashmap which is then checked to find the "winner" who received the most votes
+    * It will then return a string formatted as:  winner + " received the most votes!"
+    * */
+    public static String tally(List<String> votes) {
+
+        //TODO: Add logic to handle the instance of a tie
+        HashMap<String, Integer> tallies = new HashMap<>();
+
+        for (String vote : votes) {
+            if (tallies.containsKey(vote)) {
+               tallies.put(vote, tallies.get(vote) + 1);
+            }
+            else {
+                tallies.put(vote, 1);
+            }
+        }
+
+        int highestVotes = 0;
+        String winner = "";
+        for (String key : tallies.keySet()) {
+            if (tallies.get(key) > highestVotes) {
+                highestVotes = tallies.get(key);
+                winner = key;
+            }
+        }
+
+        return winner + " received the most votes!";
     }
 }
