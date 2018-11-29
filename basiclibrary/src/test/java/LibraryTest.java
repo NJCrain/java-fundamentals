@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.Assert.*;
@@ -79,4 +81,30 @@ public class LibraryTest {
         Library.analyzeData();
         assertEquals("High: 72\nLow: 51\nNever saw temperature: 63\nNever saw temperature: 67\nNever saw temperature: 68\nNever saw temperature: 69\n", outContent.toString());
     }
+
+    @Test public void testTally() {
+        //example data from lab assignment, seemed like a good set to use for a test
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        assertEquals("Bush received the most votes!", Library.tally(votes));
+    }
+    //TODO: Utilize this test if time allows for creating a solution for ties
+//    @Test public void testTallyTie() {
+//        List<String> votes = new ArrayList<>();
+//        votes.add("Bush");
+//        votes.add("Hedge");
+//        votes.add("Shrub");
+//
+//
+//        assertEquals("Should do something in the instance of a tie"," received the most votes!", Library.tally(votes));
+//    }
 }

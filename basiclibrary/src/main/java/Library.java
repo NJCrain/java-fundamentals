@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 /*
@@ -87,7 +89,29 @@ public class Library {
         }
     }
 
+    //TODO: Add logic to handle the instance of a tie
+    public static String tally(List<String> votes) {
 
-    //TODO: Write a function called tally that accepts a List of Strings representing votes and returns one string to show what got the most votes.
-    //TODO: Write testing code for this method, and ensure that it passes.
+        HashMap<String, Integer> tallies = new HashMap<>();
+
+        for (String vote : votes) {
+            if (tallies.containsKey(vote)) {
+               tallies.put(vote, tallies.get(vote) + 1);
+            }
+            else {
+                tallies.put(vote, 1);
+            }
+        }
+
+        int highestVotes = 0;
+        String winner = "";
+        for (String key : tallies.keySet()) {
+            if (tallies.get(key) > highestVotes) {
+                highestVotes = tallies.get(key);
+                winner = key;
+            }
+        }
+
+        return winner + " received the most votes!";
+    }
 }
