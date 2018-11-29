@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static org.junit.Assert.*;
 
@@ -29,13 +31,30 @@ public class AppTest {
         System.setErr(originalErr);
     }
 
-    /*TODO: Test the linter on a file that contains no errors.
-    * TODO: Test the linter on a file that contains one error.
-    * TODO: Test the linter on a file that contains few errors.
-    * TODO: Test the linter on a file that contains many errors.
+    /*
     * TODO: Test the linter on an empty file.
     */
-    @Test public void testLinterNoErrors() {
+    @Test public void testJSLinterNoErrors() {
+        Path file = Paths.get("resources/app.js");
+        App.jsLinter(file);
+        assertEquals("", outContent.toString());
+    }
 
+    @Test public void testJSLinterOneError() {
+        Path file = Paths.get("resources/one_error.js");
+        App.jsLinter(file);
+        assertEquals("Line 47: Missing semicolon\n", outContent.toString());
+    }
+
+    @Test public void testJSLinterFewErrors() {
+        Path file = Paths.get("resources/few_errors.js");
+        App.jsLinter(file);
+        assertEquals("Line 7: Missing semicolon\nLine 22: Missing semicolon\nLine 47: Missing semicolon\nLine 63: Missing semicolon\n", outContent.toString());
+    }
+
+    @Test public void testJSLinterManyErrors() {
+        Path file = Paths.get("resources/many_errors.js");
+        App.jsLinter(file);
+        assertEquals("Line 7: Missing semicolon\nLine 22: Missing semicolon\nLine 37: Missing semicolon\nLine 40: Missing semicolon\nLine 47: Missing semicolon\nLine 56: Missing semicolon\nLine 63: Missing semicolon\nLine 75: Missing semicolon\n", outContent.toString());
     }
 }
