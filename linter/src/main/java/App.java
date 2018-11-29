@@ -14,15 +14,14 @@ public class App {
         jsLinter(gates);
     }
 
-    /*TODO: Write a method that reads a JavaScript file with a given Path, and prints an error whenever it finds a line that doesn’t end in a semi-colon.
+    /*TODO: Write tests for this method
     */
-
     public static void jsLinter(Path file) {
         try(BufferedReader reader = Files.newBufferedReader(file)) {
             String currentLine = "";
             int line = 0;
             while (currentLine != null) {
-                if (!currentLine.isEmpty() && !currentLine.endsWith("{") && !currentLine.endsWith("}") && !currentLine.contains("if") && !currentLine.contains("else") && !currentLine.endsWith(";")) {
+                if (!currentLine.isEmpty() && !currentLine.endsWith("{") && !currentLine.endsWith("}") && !currentLine.contains("if") && !currentLine.contains("else") && !currentLine.endsWith(";") && !currentLine.startsWith("//")) {
                     System.out.println("Line " + line + ": Missing semicolon");
                 }
 
