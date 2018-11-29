@@ -14,7 +14,8 @@ public class App {
         jsLinter(gates);
     }
 
-    /*TODO: Write tests for this method
+    /*This function takes in a Path for a JavaScript file and then reads that file, searching for lines that should end in a semicolon but currently don't.
+    * Each line that is missing a semicolon will be printed out in the format of "Line " + line + ": Missing a semicolon"
     */
     public static void jsLinter(Path file) {
         try(BufferedReader reader = Files.newBufferedReader(file)) {

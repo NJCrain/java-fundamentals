@@ -89,9 +89,13 @@ public class Library {
         }
     }
 
-    //TODO: Add logic to handle the instance of a tie
+    /*This function takes in a list of strings, each string being a "vote".
+    * The votes are tallied in a hashmap which is then checked to find the "winner" who received the most votes
+    * It will then return a string formatted as:  winner + " received the most votes!"
+    * */
     public static String tally(List<String> votes) {
 
+        //TODO: Add logic to handle the instance of a tie
         HashMap<String, Integer> tallies = new HashMap<>();
 
         for (String vote : votes) {
