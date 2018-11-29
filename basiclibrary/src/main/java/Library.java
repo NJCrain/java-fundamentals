@@ -8,6 +8,9 @@ import java.util.Random;
  */
 public class Library {
 
+    /*This function takes in an integer and "rolls" a 6 sided die that many times.
+    * It returns an array containing the results of each roll
+    * */
     public static int[] roll(int rolls) {
         int[] values = new int[rolls];
         Random rnd = new Random();
@@ -18,19 +21,19 @@ public class Library {
         return values;
     }
 
+    /*Takes in an array of integers and returns true if there are duplicate values anywhere in the array, otherwise returns false*/
     public static boolean containsDuplicates(int[] arr) {
-        boolean hasDupe = false;
-        outer: for (int i = 0; i < arr.length -1; i++) {
+        for (int i = 0; i < arr.length -1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {
-                    hasDupe = true;
-                    break outer;
+                    return true;
                 }
             }
         }
-        return hasDupe;
+        return false;
     }
 
+    /*Takes in an array of integers, sums up all the values and divides them by the length to return the average*/
     public static double average(int[] arr) {
         double average = 0;
         for (int value : arr)
@@ -38,6 +41,8 @@ public class Library {
         return average/ (double)arr.length;
     }
 
+
+    /*Accepts a 2d array and will find the average of each array and returns the array with the lowest average*/
     public static int[] lowestAverage(int[][] arraySet) {
         double lowestAvg = average(arraySet[0]);
         int lowestIndex = 0;
