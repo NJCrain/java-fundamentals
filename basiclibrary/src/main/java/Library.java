@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.Random;
 
 /*
@@ -48,14 +49,45 @@ public class Library {
         return arraySet[lowestIndex];
     }
 
-    /*TODO: Use the October Seattle weather data above. Iterate through all of the data to find the min and max values. Use a HashSet of type Integer to keep track of all the unique temperatures seen. Finally, iterate from the min temp to the max temp and print out any temperature not seen during the month. Write testing code for this method, and ensure that it passes.
-    * int[][] weeklyMonthTemperatures = {
-  {66, 64, 58, 65, 71, 57, 60},
-  {57, 65, 65, 70, 72, 65, 51},
-  {55, 54, 60, 53, 59, 57, 61},
-  {65, 56, 55, 52, 55, 62, 57}
-};
-*/
+    /*This function takes a pre-determined set of daily temperatures each week for a whole month and finds the highest and lowest temperatures along with tracking all unique temperatures.
+    * It will then print out the high and low and any temperature between those two values that were not seen
+    */
+    public static void analyzeData() {
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        HashSet<Integer> temps = new HashSet<>();
+        int high = weeklyMonthTemperatures[0][0];
+        int low = weeklyMonthTemperatures[0][0];
 
-    //TODO: Write a function called tally that accepts a List of Strings representing votes and returns one string to show what got the most votes. Write testing code for this method, and ensure that it passes.
+        for (int[] arr : weeklyMonthTemperatures) {
+            for (int temp : arr) {
+
+                if (temp > high){
+                    high = temp;
+                }
+                else if (temp < low) {
+                    low = temp;
+                }
+
+                temps.add(temp);
+            }
+        }
+
+        System.out.println("High: " + high);
+        System.out.println("Low: " + low);
+        for (int i = low; i < high; i++) {
+            if (!temps.contains(i)) {
+                System.out.println("Never saw temperature: " + i);
+            }
+
+        }
+    }
+
+
+    //TODO: Write a function called tally that accepts a List of Strings representing votes and returns one string to show what got the most votes.
+    //TODO: Write testing code for this method, and ensure that it passes.
 }
