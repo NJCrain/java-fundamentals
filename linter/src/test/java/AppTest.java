@@ -57,4 +57,10 @@ public class AppTest {
         App.jsLinter(file);
         assertEquals("Line 7: Missing semicolon\nLine 22: Missing semicolon\nLine 37: Missing semicolon\nLine 40: Missing semicolon\nLine 47: Missing semicolon\nLine 56: Missing semicolon\nLine 63: Missing semicolon\nLine 75: Missing semicolon\n", outContent.toString());
     }
+
+    @Test public void testJSLinterEmptyFile() {
+        Path file = Paths.get("resources/empty_file.js");
+        App.jsLinter(file);
+        assertEquals("", outContent.toString());
+    }
 }
