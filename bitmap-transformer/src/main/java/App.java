@@ -9,13 +9,17 @@ import java.io.IOException;
 public class App {
 
     public static void main(String[] args) {
-        File image = new File(args[0]);
+        File file = new File(args[0]);
+        String transform = args[2];
 
         try {
-            BufferedImage reader = ImageIO.read(image);
-            Bitmap test = new Bitmap(reader, args[1]);
-            test.flipVertical();
-            test.save();
+            BufferedImage reader = ImageIO.read(file);
+            Bitmap image = new Bitmap(reader, args[1]);
+            switch (transform.toLowerCase()) {
+                case "flipvertical": image.flipVertical();
+                case "fliphorizontal": image.flipHoizontal();
+            }
+            image.save();
 
         }
         catch (IOException e) {
