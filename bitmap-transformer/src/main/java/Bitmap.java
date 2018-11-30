@@ -23,28 +23,32 @@ public class Bitmap {
     }
 
     public void flipHorizontal() {
-        for (int i = 0; i < pixels.length/2; i++) {
-            Color[] temp = this.pixels[i];
 
-            this.pixels[i] = this.pixels[this.pixels.length - 1 - i];
-            this.pixels[this.pixels.length - 1 - i] = temp;
+        System.out.println("in flipHorizontal");
+        for (int i = 0; i < original.getHeight(); i++) {
+            for (int j = 0; j < original.getWidth() /2; j++) {
+                int temp = original.getRGB(j, i);
+                original.setRGB(j, i, original.getRGB(original.getWidth() - j - 1, i));
+                original.setRGB(original.getWidth() - j - 1, i, temp);
+            }
         }
-        updateTransform();
     }
 
     public void flipVertical() {
-        for (int i = 0; i < pixels.length; i++) {
-            for (int j = 0; j < pixels[i].length / 2; j++) {
-                Color temp = this.pixels[i][j];
 
-                this.pixels[i][j] = this.pixels[i][this.pixels[i].length - 1 - j];
-                this.pixels[i][this.pixels[i].length - 1 - j] = temp;
+        System.out.println("in vertical");
+        for (int i = 0; i < original.getHeight(); i++) {
+            for (int j = 0; j < original.getWidth() /2; j++) {
+                int temp = original.getRGB(i, j);
+                original.setRGB(i, j, original.getRGB(i, original.getHeight() - j - 1));
+                original.setRGB(i,original.getWidth() - j - 1, temp);
             }
         }
-        updateTransform();
     }
 
     public void convertGrayscale() {
+
+        System.out.println("in grayscale");
         for (int i = 0; i < this.pixels.length; i ++) {
             for (int j = 0; j < this.pixels[i].length; j++) {
                 Color current = this.pixels[i][j];
@@ -56,6 +60,8 @@ public class Bitmap {
     }
 
     public void darken() {
+
+        System.out.println("in darken");
         for (int i = 0; i < this.pixels.length; i ++) {
             for (int j = 0; j < this.pixels[i].length; j++) {
                 this.pixels[i][j] =  new Color(this.pixels[i][j].darker().getRGB());

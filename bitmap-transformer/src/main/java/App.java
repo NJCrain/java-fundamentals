@@ -18,9 +18,13 @@ public class App {
 //            image.printColors(0);
             switch (transform.toLowerCase()) {
                 case "flipvertical": image.flipVertical();
+                                     break;
                 case "fliphorizontal": image.flipHorizontal();
+                                       break;
                 case "convertgrayscale": image.convertGrayscale();
+                                         break;
                 case "darken": image.darken();
+                                break;
             }
 //            image.printColors(0);
             image.save();
