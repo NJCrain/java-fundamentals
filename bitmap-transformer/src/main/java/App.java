@@ -15,10 +15,14 @@ public class App {
         try {
             BufferedImage reader = ImageIO.read(file);
             Bitmap image = new Bitmap(reader, args[1]);
+//            image.printColors(0);
             switch (transform.toLowerCase()) {
                 case "flipvertical": image.flipVertical();
-                case "fliphorizontal": image.flipHoizontal();
+                case "fliphorizontal": image.flipHorizontal();
+                case "convertgrayscale": image.convertGrayscale();
+                case "darken": image.darken();
             }
+//            image.printColors(0);
             image.save();
 
         }

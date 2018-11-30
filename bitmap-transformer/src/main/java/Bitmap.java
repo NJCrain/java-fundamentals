@@ -22,7 +22,7 @@ public class Bitmap {
         }
     }
 
-    public void flipHoizontal() {
+    public void flipHorizontal() {
         for (int i = 0; i < pixels.length/2; i++) {
             Color[] temp = this.pixels[i];
 
@@ -39,6 +39,26 @@ public class Bitmap {
 
                 this.pixels[i][j] = this.pixels[i][this.pixels[i].length - 1 - j];
                 this.pixels[i][this.pixels[i].length - 1 - j] = temp;
+            }
+        }
+        updateTransform();
+    }
+
+    public void convertGrayscale() {
+        for (int i = 0; i < this.pixels.length; i ++) {
+            for (int j = 0; j < this.pixels[i].length; j++) {
+                Color current = this.pixels[i][j];
+                int conversion = (int) ( (current.getRed() * 0.3) + (current.getGreen() * 0.59) + (current.getBlue() * 0.11) / 3);
+                this.pixels[i][j] =  new Color(conversion, conversion, conversion);
+            }
+        }
+        updateTransform();
+    }
+
+    public void darken() {
+        for (int i = 0; i < this.pixels.length; i ++) {
+            for (int j = 0; j < this.pixels[i].length; j++) {
+                this.pixels[i][j] =  new Color(this.pixels[i][j].darker().getRGB());
             }
         }
         updateTransform();
@@ -61,6 +81,8 @@ public class Bitmap {
             System.out.println(e);
         }
     }
+
+
 
     public void printColors(int y) {
 
