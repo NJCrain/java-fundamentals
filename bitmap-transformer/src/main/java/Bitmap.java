@@ -9,11 +9,13 @@ public class Bitmap {
     public BufferedImage original;
     public String newName;
 
+    //Creates an instance object with where to save it and a reference for the image data
     public Bitmap (BufferedImage image, String outputName) {
         this.original = image;
         this.newName = outputName;
     }
 
+    //Reverses all pixels horizontally (along the x axis)
     public void flipHorizontal() {
 
         for (int i = 0; i < original.getHeight(); i++) {
@@ -26,6 +28,7 @@ public class Bitmap {
         save();
     }
 
+    //Reverses all pixels vertically (along the y axis)
     public void flipVertical() {
 
         for (int i = 0; i < original.getWidth(); i++) {
@@ -38,6 +41,7 @@ public class Bitmap {
         save();
     }
 
+    //Gets the red green and blue values of each pixel and converts them to create a gray scale image with proper gradients
     public void convertGrayscale() {
 
         for (int i = 0; i < original.getHeight(); i ++) {
@@ -53,6 +57,7 @@ public class Bitmap {
         save();
     }
 
+    //Makes the color of each pixel darker, creating a darker image
     public void darken() {
 
         for (int i = 0; i < original.getHeight(); i ++) {
@@ -63,7 +68,7 @@ public class Bitmap {
         save();
     }
 
-
+    //Saves the transformed image to the desired output location
     public void save() {
         File output = new File(this.newName);
         try {
