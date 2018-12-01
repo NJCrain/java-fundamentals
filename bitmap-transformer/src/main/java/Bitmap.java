@@ -44,7 +44,10 @@ public class Bitmap {
             for (int j = 0; j < original.getWidth(); j++) {
                 Color current = new Color(original.getRGB(j, i));
                 int conversion = (int) ((current.getRed() * 0.3) + (current.getGreen() * 0.59) + (current.getBlue() * 0.11) / 3);
-                original.setRGB(j, i, new Color(conversion, conversion, conversion).getRGB());
+                int converted = new Color(conversion, conversion, conversion).getRGB();
+//                System.out.println("Conversion value: " + converted);
+                original.setRGB(j, i, converted);
+//                System.out.println("Reconverted value: " + original.getRGB(j, i));
             }
         }
         save();
