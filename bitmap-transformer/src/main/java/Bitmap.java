@@ -28,11 +28,11 @@ public class Bitmap {
 
     public void flipVertical() {
 
-        for (int i = 0; i < original.getHeight(); i++) {
-            for (int j = 0; j < original.getWidth() /2; j++) {
+        for (int i = 0; i < original.getWidth(); i++) {
+            for (int j = 0; j < original.getHeight() /2; j++) {
                 int temp = original.getRGB(i, j);
                 original.setRGB(i, j, original.getRGB(i, original.getHeight() - j - 1));
-                original.setRGB(i,original.getWidth() - j - 1, temp);
+                original.setRGB(i,original.getHeight() - j - 1, temp);
             }
         }
         save();
