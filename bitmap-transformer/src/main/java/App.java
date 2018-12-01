@@ -15,7 +15,6 @@ public class App {
         try {
             BufferedImage reader = ImageIO.read(file);
             Bitmap image = new Bitmap(reader, args[1]);
-//            image.printColors(0);
             switch (transform.toLowerCase()) {
                 case "flipvertical": image.flipVertical();
                                      break;
@@ -25,13 +24,11 @@ public class App {
                                          break;
                 case "darken": image.darken();
                                 break;
+                default: System.out.println("Invalid transform selected. Refer to the readme for available transforms and their names");
             }
-//            image.printColors(0);
-            image.save();
-
         }
         catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e + " Please ensure you typed the path and file name correctly.");
         }
     }
 }

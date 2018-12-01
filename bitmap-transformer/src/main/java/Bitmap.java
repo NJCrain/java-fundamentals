@@ -16,7 +16,6 @@ public class Bitmap {
 
     public void flipHorizontal() {
 
-        System.out.println("in flipHorizontal");
         for (int i = 0; i < original.getHeight(); i++) {
             for (int j = 0; j < original.getWidth() /2; j++) {
                 int temp = original.getRGB(j, i);
@@ -24,11 +23,11 @@ public class Bitmap {
                 original.setRGB(original.getWidth() - j - 1, i, temp);
             }
         }
+        save();
     }
 
     public void flipVertical() {
 
-        System.out.println("in vertical");
         for (int i = 0; i < original.getHeight(); i++) {
             for (int j = 0; j < original.getWidth() /2; j++) {
                 int temp = original.getRGB(i, j);
@@ -36,11 +35,11 @@ public class Bitmap {
                 original.setRGB(i,original.getWidth() - j - 1, temp);
             }
         }
+        save();
     }
 
     public void convertGrayscale() {
 
-        System.out.println("in grayscale");
         for (int i = 0; i < original.getHeight(); i ++) {
             for (int j = 0; j < original.getWidth(); j++) {
                 Color current = new Color(original.getRGB(j, i));
@@ -48,16 +47,17 @@ public class Bitmap {
                 original.setRGB(j, i, new Color(conversion, conversion, conversion).getRGB());
             }
         }
+        save();
     }
 
     public void darken() {
 
-        System.out.println("in darken");
         for (int i = 0; i < original.getHeight(); i ++) {
             for (int j = 0; j < original.getWidth(); j++) {
                 original.setRGB(j, i, (new Color(original.getRGB(j, i))).darker().getRGB());
             }
         }
+        save();
     }
 
 
@@ -66,8 +66,9 @@ public class Bitmap {
         try {
             ImageIO.write(original, "BMP", output);
         }
+        //This doesn't seem to work as I hoped. Running with an invalid output argument causes the program to exit and never prints out this error...
         catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e + " Could not save the file to the entered location. Please make sure it is a valid path that you have permission to write to");
         }
     }
 
