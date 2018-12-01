@@ -10,5 +10,8 @@ FILE_PATH: Path to the bpm file on your file system that you intend to transform
 OUTPUT_PATH: The location where you would like to save the transformed bitmap image to. Should include the directory and end with the file name, including the .BMP extension. (ex - resources/transform.BPM)
 
 TRANSFORM: The type of transformation to be applied.
-* flipvertical - will flip the image along the x axis.
-* fliphorizontal - will flip the image along the y axis.
+* flipVertical - Will flip the image across the x axis.
+* flipHorizontal - Will flip the image across the y axis.
+* convertGrayscale - Will calculate and convert all pixel rgb values into a grayscale value.
+* darken - Will make all the colors in the image darker.
+

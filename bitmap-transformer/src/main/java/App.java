@@ -17,13 +17,18 @@ public class App {
             Bitmap image = new Bitmap(reader, args[1]);
             switch (transform.toLowerCase()) {
                 case "flipvertical": image.flipVertical();
-                case "fliphorizontal": image.flipHoizontal();
+                                     break;
+                case "fliphorizontal": image.flipHorizontal();
+                                       break;
+                case "convertgrayscale": image.convertGrayscale();
+                                         break;
+                case "darken": image.darken();
+                                break;
+                default: System.out.println("Invalid transform selected. Refer to the readme for available transforms and their names");
             }
-            image.save();
-
         }
         catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e + " Please ensure you typed the path and file name correctly.");
         }
     }
 }
