@@ -16,10 +16,13 @@ public class Restaurant {
         this.stars = 0;
     }
 
+    //Turns the restaurant object into a readable string
     public String toString() {
         return "Restaurant: " + name + " | Price: "  + price + " | Rating: " + stars + " | Reviews: " + reviews.size();
     }
 
+    //Takes in a review to add for the restaurant, adds it to the HashSet of all other unique reviews, sets the reviews restaurant to the one it is added to,
+    //and updates the restaurants star value
     public void addReview(Review toAdd) {
         reviews.add(toAdd);
         toAdd.restaurant = this;

@@ -36,7 +36,7 @@ public class ReviewTest {
 
         //New Things that should happen
         assertEquals("Should also contain a reference to the restaurant it's for", testaurant, withRestaurant.restaurant);
-        assertEquals("Calling to String should include the restuarants name", "Author: Jim\nRestaurant: Chili's\nStars: 5\nReview: This place was amazing!", withRestaurant.toString());
+        assertEquals("Calling to String should include the restaurants name", "Author: Jim\nRestaurant: Chili's\nStars: 5\nReview: This place was amazing!", withRestaurant.toString());
         assertEquals("Should cause the restaurants stars to change", 5.0, testaurant.stars, 0.0);
         assertEquals("Should cause the restaurants review count to change", 1, testaurant.reviews.size());
 
