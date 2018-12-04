@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class RestaurantTest {
     Restaurant testaurant = new Restaurant("Chili's", "$$$");
-    Review test = new Review("This place was good", "Jimmy", 4.5);
+    Review test = new Review("This place was good", "Jimmy", 4);
 
 
     @Test
@@ -27,11 +27,11 @@ public class RestaurantTest {
     public void testAddReview() {
         testaurant.addReview(test);
 
-        assertEquals("The restaurants stars should now be 4.5", 4.5, testaurant.stars, 0.0);
+        assertEquals("The restaurants stars should now be 4.5", 4, testaurant.stars, 0.0);
         assertEquals("The HashSet for reviews should now have size of 1", 1, testaurant.reviews.size());
         assertTrue("The HashSet should contain the review that was just added", testaurant.reviews.contains(test));
         assertEquals("The added review should now have an association with the restaurant it's for", testaurant, test.restaurant);
-        assertEquals("Calling to string on the restaurant should reflect the changes from adding the review", "Restaurant: Chili's | Price: $$$ | Rating: 4.5 | Reviews: 1", testaurant.toString());
+        assertEquals("Calling to string on the restaurant should reflect the changes from adding the review", "Restaurant: Chili's | Price: $$$ | Rating: 4.0 | Reviews: 1", testaurant.toString());
     }
 
     @Test
@@ -39,8 +39,38 @@ public class RestaurantTest {
         testaurant.addReview(test);
         testaurant.addReview(test);
 
-        assertEquals("The restaurants stars be 4.5", 4.5, testaurant.stars, 0.0);
+        assertEquals("The restaurants stars be 4.5", 4, testaurant.stars, 0.0);
         assertEquals("The HashSet for reviews should have size of 1", 1, testaurant.reviews.size());
-        assertEquals("Calling to string on the restaurant should match the expected behavior of adding test once", "Restaurant: Chili's | Price: $$$ | Rating: 4.5 | Reviews: 1", testaurant.toString());
+        assertEquals("Calling to string on the restaurant should match the expected behavior of adding test once", "Restaurant: Chili's | Price: $$$ | Rating: 4.0 | Reviews: 1", testaurant.toString());
+    }
+
+    @Test
+    public void testAddReviewMultiple() {
+        Review second = new Review("This place was amazing!", "Jim", 5, testaurant);
+        Review third = new Review("This place was ok!", "Bob", 3, testaurant);
+        Review fourth = new Review("Food was pretty bland", "Nick", 2, testaurant);
+        Review fifth = new Review("Why would anyone eat here?", "Hannah", 1, testaurant);
+        testaurant.addReview(test);
+        testaurant.addReview(second);
+        testaurant.addReview(third);
+        testaurant.addReview(fourth);
+        testaurant.addReview(fifth);
+
+        assertEquals("The restaurants stars should now be 4.5", 3.0, testaurant.stars, 0.0);
+        assertEquals("The HashSet for reviews should now have size of 5", 5, testaurant.reviews.size());
+
+        assertTrue("The HashSet should contain the reviews that were just added", testaurant.reviews.contains(test));
+        assertTrue("The HashSet should contain the reviews that were just added", testaurant.reviews.contains(second));
+        assertTrue("The HashSet should contain the reviews that were just added", testaurant.reviews.contains(third));
+        assertTrue("The HashSet should contain the reviews that were just added", testaurant.reviews.contains(fourth));
+        assertTrue("The HashSet should contain the reviews that were just added", testaurant.reviews.contains(fifth));
+
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, test.restaurant);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, second.restaurant);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, third.restaurant);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, fourth.restaurant);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, fifth.restaurant);
+
+        assertEquals("Calling to string on the restaurant should reflect the changes from adding the reviews", "Restaurant: Chili's | Price: $$$ | Rating: 3.0 | Reviews: 5", testaurant.toString());
     }
 }

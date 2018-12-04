@@ -25,7 +25,7 @@ public class Restaurant {
         toAdd.restaurant = this;
         double totalStars = 0;
         for (Review review : reviews) {
-            totalStars += review.stars;
+            totalStars += (double) review.stars;
         }
         stars = totalStars / (double) reviews.size();
     }

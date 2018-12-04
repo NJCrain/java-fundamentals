@@ -1,16 +1,16 @@
 public class Review {
     public String body;
     public String author;
-    public double stars;
+    public int stars;
     public Restaurant restaurant;
 
-    public Review(String body, String author, double stars) {
+    public Review(String body, String author, int stars) {
         this.body = body;
         this.author = author;
         this.stars = stars;
     }
 
-    public Review(String body, String author, double stars, Restaurant restaurant) {
+    public Review(String body, String author, int stars, Restaurant restaurant) {
         this.body = body;
         this.author = author;
         this.stars = stars;
