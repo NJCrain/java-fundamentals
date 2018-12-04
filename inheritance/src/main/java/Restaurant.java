@@ -19,4 +19,12 @@ public class Restaurant {
     public String toString() {
         return "Restaurant: " + name + " | Price: "  + price + " | Rating: " + stars + " | Reviews: " + reviews.size();
     }
+
+    public void addReview(Review toAdd) {
+        reviews.add(toAdd);
+        toAdd.restaurant = this;
+        double totalStars = stars * (double) reviews.size();
+        totalStars += toAdd.stars;
+        stars = totalStars / (double) reviews.size();
+    }
 }

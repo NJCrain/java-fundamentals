@@ -6,10 +6,12 @@ import static org.junit.Assert.*;
 
 public class RestaurantTest {
     Restaurant testaurant = new Restaurant("Chili's", "$$$");
+    Review test = new Review("This place was good", "Jimmy", 4.5);
+
 
     @Test
     public void testConstructor() {
-        assertNotNull("Testaurant should create a non-null Restaurant object", testaurant);
+        assertNotNull("Testaurant should be a non-null Restaurant object", testaurant);
         assertEquals("It should have a rating of 0.0 stars by default", 0.0, testaurant.stars, 0.0);
         assertEquals("Should have an accessible name value", "Chili's", testaurant.name);
         assertEquals("Should also have an accessible price rating", "$$$", testaurant.price);
@@ -19,5 +21,16 @@ public class RestaurantTest {
     @Test
     public void testToString() {
         assertEquals("The restaurant should have a working toString method that returns a formatted string ", "Restaurant: Chili's | Price: $$$ | Rating: 0.0 | Reviews: 0", testaurant.toString());
+    }
+
+    @Test
+    public void testAddReview() {
+        testaurant.addReview(test);
+
+        assertEquals("The restaurants stars should now be 4.5", 4.5, testaurant.stars, 0.0);
+        assertEquals("The HashSet for reviews should now have size of 1", 1, testaurant.reviews.size());
+        assertTrue("The HashSet should contain the review that was just added", testaurant.reviews.contains(test));
+        assertEquals("The added review should now have an association with the restaurant it's for", testaurant, test.restaurant);
+        assertEquals("Calling to string on the restaurant should reflect the changes from adding the review", "Restaurant: Chili's | Price: $$$ | Rating: 4.5 | Reviews: 1", testaurant.toString());
     }
 }

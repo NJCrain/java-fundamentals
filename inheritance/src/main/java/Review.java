@@ -10,6 +10,13 @@ public class Review {
         this.stars = stars;
     }
 
+    public Review(String body, String author, double stars, Restaurant restaurant) {
+        this.body = body;
+        this.author = author;
+        this.stars = stars;
+        restaurant.addReview(this);
+    }
+
     public String toString() {
         if(restaurant != null) {
             return "Author: " + author + "\n" + "Restaurant: " + restaurant.name + "\n" + "Stars: " + stars + "\n" + "Review: " + body;
