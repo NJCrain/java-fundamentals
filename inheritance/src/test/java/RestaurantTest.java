@@ -33,4 +33,14 @@ public class RestaurantTest {
         assertEquals("The added review should now have an association with the restaurant it's for", testaurant, test.restaurant);
         assertEquals("Calling to string on the restaurant should reflect the changes from adding the review", "Restaurant: Chili's | Price: $$$ | Rating: 4.5 | Reviews: 1", testaurant.toString());
     }
+
+    @Test
+    public void testAddReviewDuplicate() {
+        testaurant.addReview(test);
+        testaurant.addReview(test);
+
+        assertEquals("The restaurants stars be 4.5", 4.5, testaurant.stars, 0.0);
+        assertEquals("The HashSet for reviews should have size of 1", 1, testaurant.reviews.size());
+        assertEquals("Calling to string on the restaurant should match the expected behavior of adding test once", "Restaurant: Chili's | Price: $$$ | Rating: 4.5 | Reviews: 1", testaurant.toString());
+    }
 }

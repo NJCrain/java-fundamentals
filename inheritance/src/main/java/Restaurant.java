@@ -23,8 +23,10 @@ public class Restaurant {
     public void addReview(Review toAdd) {
         reviews.add(toAdd);
         toAdd.restaurant = this;
-        double totalStars = stars * (double) reviews.size();
-        totalStars += toAdd.stars;
+        double totalStars = 0;
+        for (Review review : reviews) {
+            totalStars += review.stars;
+        }
         stars = totalStars / (double) reviews.size();
     }
 }
