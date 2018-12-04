@@ -2,6 +2,7 @@ public class Review {
     public String body;
     public String author;
     public double stars;
+    public Restaurant restaurant;
 
     public Review(String body, String author, double stars) {
         this.body = body;
@@ -10,8 +11,11 @@ public class Review {
     }
 
     public String toString() {
-        return "Author: " + author + "\n" + "Stars: " + stars + "\n" + "Review: " + body;
+        if(restaurant != null) {
+            return "Author: " + author + "\n" + "Restaurant: " + restaurant.name + "\n" + "Stars: " + stars + "\n" + "Review: " + body;
+        }
+        else {
+            return "Author: " + author + "\n" + "Stars: " + stars + "\n" + "Review: " + body;
+        }
     }
-    //TODO: Test your toString method.
-    //TODO: Write a test to create an instance of Review and ensure that its toString is working properly.
 }
