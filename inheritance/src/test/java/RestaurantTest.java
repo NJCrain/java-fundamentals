@@ -5,8 +5,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class RestaurantTest {
-    @Test public void testSomeLibraryMethod() {
-        Restaurant classUnderTest = new Restaurant();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    Restaurant testaurant = new Restaurant("Chili's", "$$$");
+
+    @Test public void testConstructor() {
+        assertNotNull("Testaurant should create a non-null Restaurant object", testaurant);
+        assertEquals("It should have a rating of 0.0 stars by default", 0.0, testaurant.stars, 0.0);
+        assertEquals("Should have an accessible name value", "Chili's", testaurant.name);
+        assertEquals("Should also have an accessible price rating", "$$$", testaurant.price);
+    }
+
+    @Test public void testToString() {
+        assertEquals("The restaurant should have a working to String method that returns in the format of  Restaurant: | Price: | Rating: ", "Restaurant: Chili's | Price: $$$ | Rating: 0.0", testaurant.toString());
     }
 }
