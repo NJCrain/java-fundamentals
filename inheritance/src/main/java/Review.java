@@ -1,6 +1,17 @@
 public class Review {
-    //TODO: Each Review should have a body, an author, and a number of stars.
-    //TODO: Implement a reasonable toString method for Reviews.
+    public String body;
+    public String author;
+    public double stars;
+
+    public Review(String body, String author, double stars) {
+        this.body = body;
+        this.author = author;
+        this.stars = stars;
+    }
+
+    public String toString() {
+        return "Author: " + author + "\n" + "Stars: " + stars + "\n" + "Review: " + body;
+    }
     //TODO: Test your toString method.
     //TODO: Write a test to create an instance of Review and ensure that its toString is working properly.
 }
