@@ -25,11 +25,15 @@ public class Restaurant implements Reviewable {
     //and updates the restaurants star value
     public void addReview(Review toAdd) {
         reviews.add(toAdd);
-        toAdd.restaurant = this;
+        toAdd.location = this;
         double totalStars = 0;
         for (Review review : reviews) {
             totalStars += (double) review.stars;
         }
         stars = totalStars / (double) reviews.size();
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

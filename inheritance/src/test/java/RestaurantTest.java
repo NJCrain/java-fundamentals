@@ -30,7 +30,7 @@ public class RestaurantTest {
         assertEquals("The restaurants stars should now be 4.5", 4, testaurant.stars, 0.0);
         assertEquals("The HashSet for reviews should now have size of 1", 1, testaurant.reviews.size());
         assertTrue("The HashSet should contain the review that was just added", testaurant.reviews.contains(test));
-        assertEquals("The added review should now have an association with the restaurant it's for", testaurant, test.restaurant);
+        assertEquals("The added review should now have an association with the restaurant it's for", testaurant, test.location);
         assertEquals("Calling to string on the restaurant should reflect the changes from adding the review", "Restaurant: Chili's | Price: $$$ | Rating: 4.0 | Reviews: 1", testaurant.toString());
     }
 
@@ -65,11 +65,11 @@ public class RestaurantTest {
         assertTrue("The HashSet should contain the reviews that were just added", testaurant.reviews.contains(fourth));
         assertTrue("The HashSet should contain the reviews that were just added", testaurant.reviews.contains(fifth));
 
-        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, test.restaurant);
-        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, second.restaurant);
-        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, third.restaurant);
-        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, fourth.restaurant);
-        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, fifth.restaurant);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, test.location);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, second.location);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, third.location);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, fourth.location);
+        assertEquals("The added reviews should now have an association with the restaurant it's for", testaurant, fifth.location);
 
         assertEquals("Calling to string on the restaurant should reflect the changes from adding the reviews", "Restaurant: Chili's | Price: $$$ | Rating: 3.0 | Reviews: 5", testaurant.toString());
     }
