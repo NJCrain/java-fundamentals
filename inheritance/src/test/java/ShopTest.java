@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 public class ShopTest {
     Shop test = new Shop("Target", "A store with lots of stuff", "$$");
-    Review rev = new Review("It was pretty cool", "Jim", 4);
+    Review rev = new Review("It was pretty cool", "Jimmy", 4);
 
     @Test
     public void testConstructor() {

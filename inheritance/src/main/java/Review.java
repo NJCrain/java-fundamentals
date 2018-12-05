@@ -21,6 +21,14 @@ public class Review {
         location.addReview(this);
     }
 
+    public Review(String body, String author, int stars, Reviewable location, String movieReviewed) {
+        this.body = body;
+        this.author = author;
+        this.stars = stars;
+        String movie = movieReviewed;
+        location.addReview(this);
+    }
+
     //Converts the review object into a readable string
     public String toString() {
         if(location != null) {
