@@ -3,8 +3,7 @@ public class Review {
     public String author;
     public int stars;
     public Reviewable location;
-    //TODO: Some reviews should now have a String movie instance variable, to hold which movie that reviewer is referencing.
-    //TODO: Make sure that someone reviewing a Restaurant or a Shop doesn’t have to include which movie they saw!
+    public String movie;
 
     //Creates a review not associated to any restaurant
     public Review(String body, String author, int stars) {
@@ -21,21 +20,25 @@ public class Review {
         location.addReview(this);
     }
 
-    public Review(String body, String author, int stars, Reviewable location, String movieReviewed) {
+    public Review(String body, String author, int stars, Reviewable location, String movie) {
         this.body = body;
         this.author = author;
         this.stars = stars;
-        String movie = movieReviewed;
+        this.movie = movie;
         location.addReview(this);
     }
 
     //Converts the review object into a readable string
     public String toString() {
         if(location != null) {
-            return "Author: " + author + "\n" + "Restaurant: " + location.getName() + "\n" + "Stars: " + stars + "\n" + "Review: " + body;
+            if(movie != null) {
+                return "Author: " + author + "\nMovie: " + movie + "\nTheater: " + location.getName() + "\nStars: " + stars + "\nReview: " + body;
+            } else {
+                return "Author: " + author + "\nLocation: " + location.getName() + "\nStars: " + stars + "\nReview: " + body;
+            }
         }
         else {
-            return "Author: " + author + "\n" + "Stars: " + stars + "\n" + "Review: " + body;
+            return "Author: " + author + "\nStars: " + stars + "\nReview: " + body;
         }
     }
 }
