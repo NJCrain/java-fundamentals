@@ -1,11 +1,7 @@
-import java.util.HashSet;
 import java.util.Set;
 
-public class Theater implements Reviewable {
-    public String name;
+public class Theater extends Location{
     public Set<String> movies;
-    public double stars;
-    public Set<Review> reviews = new HashSet<>();
 
     //Create a new Theater instance
     public Theater(String name, Set<String> movies) {
@@ -27,21 +23,5 @@ public class Theater implements Reviewable {
     //Returns a formatted string representing the Theater object
     public String toString() {
         return "Theater name: " + name + " | stars: " + stars + "\nmovies: " + movies.toString();
-    }
-
-    //Adds a review to the Theaters set
-    public void addReview(Review toAdd) {
-        reviews.add(toAdd);
-        toAdd.location = this;
-        double totalStars = 0;
-        for (Review review : reviews) {
-            totalStars += (double) review.stars;
-        }
-        stars = totalStars / (double) reviews.size();
-    }
-
-    //Returns the Theaters name
-    public String getName() {
-        return this.name;
     }
 }

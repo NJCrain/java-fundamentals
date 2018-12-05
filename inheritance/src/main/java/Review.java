@@ -2,7 +2,7 @@ public class Review {
     public String body;
     public String author;
     public int stars;
-    public Reviewable location;
+    public Location location;
     public String movie;
 
     //Creates a review not associated to any restaurant
@@ -33,9 +33,9 @@ public class Review {
     public String toString() {
         if(location != null) {
             if(movie != null) {
-                return "Author: " + author + "\nMovie: " + movie + "\nTheater: " + location.getName() + "\nStars: " + stars + "\nReview: " + body;
+                return "Author: " + author + "\nMovie: " + movie + "\nTheater: " + location.name + "\nStars: " + stars + "\nReview: " + body;
             } else {
-                return "Author: " + author + "\nLocation: " + location.getName() + "\nStars: " + stars + "\nReview: " + body;
+                return "Author: " + author + "\nLocation: " + location.name + "\nStars: " + stars + "\nReview: " + body;
             }
         }
         else {
