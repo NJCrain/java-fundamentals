@@ -3,6 +3,9 @@ public class Review {
     public String author;
     public int stars;
     public Restaurant restaurant;
+    //TODO: Make it so a review can be about a shop or restaurant
+    // Some reviews should now have a String movie instance variable, to hold which movie that reviewer is referencing.
+    // Make sure that someone reviewing a Restaurant or a Shop doesn’t have to include which movie they saw!
 
     //Creates a review not associated to any restaurant
     public Review(String body, String author, int stars) {
