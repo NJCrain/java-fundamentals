@@ -20,7 +20,8 @@ public class Review {
         location.addReview(this);
     }
 
-    public Review(String body, String author, int stars, Reviewable location, String movie) {
+    //Creates a review with associations to the Theater it is for and the specifc movie
+    public Review(String body, String author, int stars, Theater location, String movie) {
         this.body = body;
         this.author = author;
         this.stars = stars;

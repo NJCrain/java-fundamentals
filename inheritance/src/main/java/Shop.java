@@ -8,6 +8,7 @@ public class Shop implements Reviewable {
     public double stars;
     public Set<Review> reviews = new HashSet<>();
 
+    //Create a new Shop instance
     public Shop(String name, String description, String price) {
         this.name = name;
         this.description = description;
@@ -15,10 +16,12 @@ public class Shop implements Reviewable {
         this.stars = 0;
     }
 
+    //Returns a formatted string representing the shop object
     public String toString() {
         return "Shop name: " + name + " | stars: " + stars + " | price: " + price + "\ndescription: " + description;
     }
 
+    //Adds a review to the set and updates stars for the Shop
     public void addReview(Review toAdd) {
         reviews.add(toAdd);
         toAdd.location = this;
@@ -29,6 +32,7 @@ public class Shop implements Reviewable {
         stars = totalStars / (double) reviews.size();
     }
 
+    //returns the shops name
     public String getName() {
         return this.name;
     }
