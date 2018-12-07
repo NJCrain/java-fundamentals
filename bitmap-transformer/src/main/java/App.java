@@ -26,6 +26,7 @@ public class App {
                                 break;
                 default: System.out.println("Invalid transform selected. Refer to the readme for available transforms and their names");
             }
+            System.out.println("Transform completed successfully, your new image should now be saved");
         }
         catch (IOException e) {
             System.out.println(e + " Please ensure you typed the path and file name correctly.");
